@@ -10,15 +10,18 @@
           <tr>
             <th>Brand Name</th>
             <th>Model Name</th>
+            <th>Model Year</th>
             <th>Color Name</th>
             <th>Daily Price</th>
           </tr>
         </thead>
-        <tr *ngFor="let carDetail of carDetails">
+        <tr (click)="setCurrentCar(carDetail)" routerLink="/cars/cardetail/{{carDetail.carId}}"
+          *ngFor="let carDetail of carDetails">
           <td>{{ carDetail.brandName }}</td>
           <td>{{ carDetail.modelName }}</td>
+          <td>{{ carDetail.modelYear | date:'yyyy'}}</td>
           <td>{{ carDetail.colorName }}</td>
-          <td>{{ carDetail.dailyPrice }}</td>
+          <td>{{ carDetail.dailyPrice | currency: "TRY":"₺ ":""}}</td>
         </tr>
       </table>
     </div>

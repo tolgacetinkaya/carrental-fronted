@@ -1,0 +1,48 @@
+<div class="container-md" style="height: 40rem; width: 40rem">
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <!-- <div class="carousel-indicators">
+      <button  type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+        class="active" style="background-color: black" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+        style="background-color: black" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+        style="background-color: black" aria-label="Slide 3"></button>
+    </div> -->
+
+    <div class="carousel-inner d-flex" style="height: 50vh; min-height: 20rem; max-height: 30rem">
+      <div *ngFor="let carImage of carImages; index as i; first as firstImage" class="carousel-item align-self-center"
+        [ngClass]="{ active: firstImage }" style="height: 100%; width: 100%">
+        <img src="{{imageUrl}}{{carImage.imagePath}}" class="d-block w-100"  />
+      </div>
+
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+
+  <div *ngIf="carDetail" class="card" style="width: 40">
+    <div class="card-body">
+      <h5 class="card-title">
+        {{ carDetail.brandName }} {{ carDetail.modelName }}
+      </h5>
+      <p class="card-text">
+        {{ carDetail.modelYear | date: "yyyy" }} Model
+      </p>
+      <p class="card-text">{{ carDetail.colorName }} renginde</p>
+      <p class="card-text">
+        Günlük kirası : {{ carDetail.dailyPrice | currency: "TRY":"₺ ":"" }}
+      </p>
+      <p class="card-text">{{ carDetail.description }}</p>
+    </div>
+  </div>
+</div>

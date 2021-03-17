@@ -3,25 +3,19 @@
   <div class="container-small">
     <div class="row">
       <div class="col-md-3">
-        <app-brand></app-brand>
+        <div class="shadow p-3 mb-5 bg-white rounded" style="margin-top: 1.75rem;">
+          <div class="container-small">
+            <ul class="list-group">
+              <app-brand></app-brand>
+              <app-color></app-color>
+            </ul>
+          </div>
+        </div>
       </div>
       <div class="col-md-9">
-        <app-car></app-car>
+        <router-outlet></router-outlet>
+        
       </div>
     </div>
   </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-2">
-        <app-color></app-color>
-      </div>
-      <div class="col-md-7">
-        <app-rental></app-rental>
-      </div>
-      <div class="col-md-3">
-        <app-customer></app-customer>
-      </div>
-    </div>
-  </div>
-  <router-outlet></router-outlet>
 </div>

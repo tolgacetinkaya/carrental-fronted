@@ -1,8 +1,5 @@
-<div class="shadow p-3 mb-5 bg-white rounded">
-<div class="container-small">
-<ul class="list-group">
-  <li class="list-group-item list-group-item-dark " style="margin-top: 2rem;">Brands</li>
-  <li *ngFor="let brand of brands " class="list-group-item list-group-item-action">{{brand.brandName}}</li>
-</ul>
-</div>
-</div>
+<li (click)="cleanCurrentBrand()" routerLink="/cars" [class]="getAllBrandClass()"
+  style="margin-top: 2rem; font-weight: bold;">All Brands</li>
+<li (click)="setCurrentBrand(brand)" routerLink="/cars/brand/{{brand.brandId}}" *ngFor="let brand of brands"
+  [class]="getCurrentBrandClass(brand)">{{brand.brandName}}</li>
+  
