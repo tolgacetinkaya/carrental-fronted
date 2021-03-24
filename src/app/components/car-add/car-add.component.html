@@ -1,0 +1,60 @@
+<div class="content" style="margin-top: 5px;">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="title">Add a car</h5>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="carAddForm">
+                    <div class="mb-3">
+                        <label for="modelName">Model Name</label>
+                        <div class="form-group">
+                            <input type="text" name="modelName" id="modelName" formControlName="modelName"
+                                class="form-control" placeholder="Model Name">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="brandId">Brand Id</label>
+                        <div class="form-group">
+                            <input type="number" name="brandId" id="brandId" formControlName="brandId"
+                                class="form-control" placeholder="Brand Id">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="colorId">Color Id</label>
+                        <div class="form-group">
+                            <input type="number" name="colorId" id="colorId" formControlName="colorId"
+                                class="form-control" placeholder="Color Id">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="modelYear">Model Year</label>
+                        <div class="form-group">
+                            <input type="date" name="modelYear" id="modelYear" formControlName="modelYear"
+                                class="form-control" placeholder="Model Year">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="dailyPrice">Daily Price</label>
+                        <div class="form-group">
+                            <input type="number" name="dailyPrice" id="dailyPrice" formControlName="dailyPrice"
+                                class="form-control" placeholder="Daily Price">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description">Description</label>
+                        <div class="form-group">
+                            <input type="text" name="description" id="description" formControlName="description"
+                                class="form-control" placeholder="Description">
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-fill btn-primary" (click)="add()">Add</button>
+            </div>
+        </div>
+    </div>
+
+</div>

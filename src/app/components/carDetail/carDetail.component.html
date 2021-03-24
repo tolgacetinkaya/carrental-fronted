@@ -12,9 +12,8 @@
     <div class="carousel-inner d-flex" style="height: 50vh; min-height: 20rem; max-height: 30rem">
       <div *ngFor="let carImage of carImages; index as i; first as firstImage" class="carousel-item align-self-center"
         [ngClass]="{ active: firstImage }" style="height: 100%; width: 100%">
-        <img src="{{imageUrl}}{{carImage.imagePath}}" class="d-block w-100"  />
+        <img src="{{ imageUrl }}{{ carImage.imagePath }}" class="d-block w-100" />
       </div>
-
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
       data-bs-slide="prev">
@@ -28,16 +27,31 @@
     </button>
   </div>
 
-
-
+  <div class="card">
+    <div class="car-body" style="height: auto;">
+      <div class="form-group row">
+        <label for="example-datetime-local-input" class="col-4 col-form-label"><strong> Rent Date and Time :</strong></label>
+        <div class="col-8">
+          <input class="form-control" type="datetime-local" value="2021-03-19T12:00:00" id="example-datetime-local-input" >
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="example-datetime-local-input" class="col-4 col-form-label"><strong> Retrun Date and Time :</strong></label>
+        <div class="col-8">
+          <input class="form-control" type="datetime-local" value="2021-03-20T12:00:00" id="example-datetime-local-input">
+        </div>
+      </div>
+<br>
+      <button class="btn btn-primary float-left"  routerLink="/cars/payment">Kirala</button>
+    </div>
+  </div>
+  <br>
   <div *ngIf="carDetail" class="card" style="width: 40">
     <div class="card-body">
       <h5 class="card-title">
         {{ carDetail.brandName }} {{ carDetail.modelName }}
       </h5>
-      <p class="card-text">
-        {{ carDetail.modelYear | date: "yyyy" }} Model
-      </p>
+      <p class="card-text">{{ carDetail.modelYear | date: "yyyy" }} Model</p>
       <p class="card-text">{{ carDetail.colorName }} renginde</p>
       <p class="card-text">
         Günlük kirası : {{ carDetail.dailyPrice | currency: "TRY":"₺ ":"" }}

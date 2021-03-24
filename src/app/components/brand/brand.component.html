@@ -2,4 +2,4 @@
   style="margin-top: 2rem; font-weight: bold;">All Brands</li>
 <li (click)="setCurrentBrand(brand)" routerLink="/cars/brand/{{brand.brandId}}" *ngFor="let brand of brands"
   [class]="getCurrentBrandClass(brand)">{{brand.brandName}}</li>
-  
+

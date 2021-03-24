@@ -1,10 +1,49 @@
-<div class="shadow p-3 mb-5 bg-white rounded" style="margin-top: 1.75rem;">
+<div class="shadow p-3 mb-5 bg-white rounded">
   <div class="container-small">
     <h2>Car Rental List</h2>
     <div *ngIf="dataLoaded == false" class="spinner-border text-info" role="status">
       <span class="visually-hidden">Loading...</span>
     </div>
-    <div class="table table-hover table-responsive-sm">
+
+    <div class="row align-items-start">
+      <div class="col">
+        <label class="form-label"><strong>Search</strong> </label>
+        <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText"
+          placeholder="Enter your search statement" />
+      </div>
+      <div *ngIf="filterText" class="alert alert-dark">
+        You've searched <strong>{{ filterText }}</strong>
+      </div>
+
+      <div class="col">
+        <label class="form-label"><strong>Brands</strong> </label>
+        <select [(ngModel)]="brandIdFilter" class="form-select" aria-label="Default select example">
+          <option *ngFor="let brand of brands" [value]="brand.brandId" selected="{{ selectedBrand(brand.brandId) }}">
+            {{ brand.brandName }}
+          </option>
+        </select>
+      </div>
+      <div class="col">
+        <label class="form-label"><strong>Colors</strong> </label>
+        <select [(ngModel)]="colorIdFilter" class="form-select" aria-label="Default select example">
+          <option *ngFor="let color of colors" [value]="color.colorId" selected="{{ selectedColor(color.colorId) }}">
+            {{ color.colorName }}
+          </option>
+        </select>
+      </div>
+      <div class="row" style="margin-top: 5px;">
+        <div class="col-md-1" >
+          <a routerLink="/cars/filter/brand/{{ brandIdFilter }}" routerLink="/cars/filter/color/{{ colorIdFilter }}"
+            class="btn btn-primary">Filtrele</a>
+        </div>
+
+        <div class="col" >
+          <a routerLink="/cars" class="btn btn-danger">Temizle</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="table table-hover table-responsive-sm" style="margin-top: 5px;">
       <table *ngIf="dataLoaded == true" table class="table table-striped table-sm">
         <thead>
           <tr>
@@ -13,17 +52,36 @@
             <th>Model Year</th>
             <th>Color Name</th>
             <th>Daily Price</th>
+            <th></th>
+            <th></th>
           </tr>
         </thead>
-        <tr (click)="setCurrentCar(carDetail)" routerLink="/cars/cardetail/{{carDetail.carId}}"
-          *ngFor="let carDetail of carDetails">
-          <td>{{ carDetail.brandName }}</td>
-          <td>{{ carDetail.modelName }}</td>
-          <td>{{ carDetail.modelYear | date:'yyyy'}}</td>
-          <td>{{ carDetail.colorName }}</td>
-          <td>{{ carDetail.dailyPrice | currency: "TRY":"₺ ":""}}</td>
-        </tr>
+        <tbody>
+          <tr *ngFor="let carDetail of carDetails | filterPipe: filterText">
+            <td>{{ carDetail.brandName }}</td>
+            <td>{{ carDetail.modelName }}</td>
+            <td>{{ carDetail.modelYear | date: "yyyy" }}</td>
+            <td>{{ carDetail.colorName }}</td>
+            <td>{{ carDetail.dailyPrice | currency: "TRY":"₺ ":"" }}</td>
+            <td>
+              <button (click)="setCurrentCar(carDetail)" routerLink="/cars/cardetail/{{ carDetail.carId }}"
+                type="button" class="btn btn-primary">
+                Details
+              </button>
+            </td>
+            <td>
+              <button routerLink="/cars/update/{{ carDetail.carId }}"
+                type="button" class="btn btn-primary">
+                Update
+              </button>
+            </td>
+          </tr>
+        </tbody>
       </table>
     </div>
+    <div class="footer" style="margin-top:2rem ;">
+      <button class="btn btn-fill btn-primary" routeLink="/cars/add">Add A New Car</button>
+  </div>
+
   </div>
 </div>

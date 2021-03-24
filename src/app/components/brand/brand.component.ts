@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Brand } from 'src/app/models/brand';
 import { BrandService } from 'src/app/services/brand.service';
 
@@ -15,7 +16,7 @@ export class BrandComponent implements OnInit {
   constructor(private brandService: BrandService) { }
 
   ngOnInit() {
-    this.getBrands();
+    this.getBrands();    
   }
 
   getBrands() {
@@ -26,6 +27,7 @@ export class BrandComponent implements OnInit {
 
   setCurrentBrand(brand: Brand) {
     this.currentBrand = brand;
+    console.log(brand);
   }
 
   getCurrentBrandClass(brand: Brand) {
@@ -43,8 +45,11 @@ export class BrandComponent implements OnInit {
       return "list-group-item"
     }
   }
-  cleanCurrentBrand(){
-    this.currentBrand={brandId: 0,brandName:""};
+  cleanCurrentBrand() {
+    this.currentBrand = { brandId: 0, brandName: "" };
   }
+
+ 
+
 
 }

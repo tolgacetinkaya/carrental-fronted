@@ -1,0 +1,25 @@
+<div class="content" style="margin-top: 5px;">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="title">Add a Color</h5>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="colorAddForm">
+                    <div class="mb-3">
+                        <label for="colorName">Color Name</label>
+                        
+                            <input type="text" name="colorName" id="colorName" formControlName="colorName"
+                                class="form-control" placeholder="Color Name">
+                     
+                    </div>
+
+                </form>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-fill btn-primary" (click)="add()">Add</button>
+            </div>
+        </div>
+    </div>
+
+</div>
